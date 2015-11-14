@@ -1,7 +1,8 @@
-﻿Imports Gambest.Commands
+﻿Imports FFACETools
 Imports Gambest.Objects
+Imports Gambest.Commands
 Imports System.Xml
-Imports FFACETools
+
 Module Main
     Private Delay As Integer = 0
     Private partycount As Integer = 0
@@ -36,20 +37,16 @@ Module Main
             OutError(0, "xml not found.", True)
         End If
 
-        Dim CharList As List(Of character) = Parse(filepath, Delay, partycount) 'parse the xml
+        Dim CharList As List(Of Character) = Parse(filepath, Delay, partycount) 'parse the xml
 
         Dim threadlist As New List(Of System.Threading.Thread) ' time to make threads!
 
-        For Each character As character In CharList
+        For Each character As Character In CharList
             For Each ffxi As Process In processes
                 If ffxi.MainWindowTitle = character.Name Then 'verify character exists in xml AND is logged on
                     Dim instance As New FFACE(ffxi.Id)
                     character.INSTANCE = instance 'bind their fface instance to their gambits
-                    Dim charObj As New monitorObject ' initialize them
-                    charObj.delay = Delay 'set their variables
-                    charObj.player = character
-                    charObj.partycount = partycount
-
+                    Dim charObj As MonitorObject = New MonitorObject(character, Delay, partycount) ' initialize them
                     threadlist.Add(New System.Threading.Thread(AddressOf charObj.Monitor)) 'add it to the stack
                 End If
             Next
@@ -64,5 +61,66 @@ Module Main
         Next
 
     End Sub
+
+    Public Sub OutError(ByVal Line As Integer, ByVal Message As String, ByVal Kill As Boolean)
+        Dim Outmessage As String = "Error at line #" + Line.ToString() + vbNewLine _
+    + Message + vbNewLine _
+    + "Press any button to "
+        If Kill Then
+            Outmessage = Outmessage + "end the program."
+        Else
+            Outmessage = Outmessage + "continue."
+        End If
+        Console.Write(Outmessage)
+        Console.ReadKey()
+        Console.WriteLine("")
+        If Kill Then End
+    End Sub
+
+    Public Function Parse(ByVal filepath As String, ByRef delay As Integer, ByRef partycount As Integer) As List(Of Character)
+
+        Dim outlist As New List(Of Character)
+
+        Dim reader As New XmlDocument()
+        reader.Load(filepath)
+        ''primed
+
+        Dim SettingNode As XmlNode = reader.SelectSingleNode("/ROOT/SETTINGS")
+        delay = SettingNode.SelectSingleNode("./DELAY").FirstChild.Value
+        partycount = SettingNode.SelectSingleNode("./PARTYCOUNT").FirstChild.Value
+
+        For Each player As XmlNode In reader.SelectNodes("/ROOT/PLAYER")
+            Dim name = player.Attributes("name").Value.Trim
+            Dim leader As Boolean = player.Attributes("leader").Value.Trim
+            Dim character As New Character(name, leader)
+
+            For Each GambitNode As XmlNode In player.SelectNodes("./GAMBIT")
+                Dim triggerNode As XmlNode = GambitNode.SelectSingleNode("./TRIGGER")
+                Dim logicstring As String = triggerNode.Attributes("gate").Value
+
+                Dim Gambit As New Gambit(logicstring)
+
+                For Each Node As XmlNode In triggerNode.ChildNodes
+                    Dim target As String = Node.Name.Trim
+                    Dim ttype As String = Node.Attributes("type").Value
+                    Dim gate As String = Node.Attributes("gate").Value
+                    Dim targ As String = Node.Attributes("arg").Value
+                    Dim trigger As New Trigger(target, gate, ttype, targ)
+
+                    Gambit.triggers.Add(trigger)
+                Next
+
+                Dim ReactionNode As XmlNode = GambitNode.SelectSingleNode("./REACTION")
+                Dim type As String = ReactionNode.Attributes("type").Value
+                Dim arg As String = ReactionNode.Attributes("arg").Value
+                Gambit.reaction = New Reaction(type, arg)
+
+                character.gambits.Add(Gambit)
+            Next
+            outlist.Add(character)
+        Next
+
+        Return outlist
+    End Function
 
 End Module

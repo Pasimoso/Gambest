@@ -88,7 +88,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands.vb" />
+    <Compile Include="Objects\Character.vb" />
+    <Compile Include="Commands\MonitorObject.vb" />
     <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -105,7 +106,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Objects.vb" />
+    <Compile Include="Objects\Gambit.vb" />
+    <Compile Include="Objects\Enums.vb" />
+    <Compile Include="Objects\Reaction.vb" />
+    <Compile Include="Objects\Trigger.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -160,6 +164,7 @@
       <Name>FFACETools</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PreBuildEvent>
