@@ -1,9 +1,2 @@
-# Gambest
+# Gambest [![Build status](https://ci.appveyor.com/api/projects/status/18t56r5bt6eofd4k?svg=true)](https://ci.appveyor.com/project/Mykezero/gambest)
 Gambits v 4.0 for FFXI using FFACE
-
-## Documentation
-Coming soon. 
-
-## Dependencies
-* FFACETools: https://github.com/h1pp0/FFACETools_ffevo.net.git
-* FFACE: http://delvl.ffevo.net/Lolwutt/FFACE4-Public.git
