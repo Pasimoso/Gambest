@@ -68,10 +68,6 @@
     <ApplicationIcon>Sword-03-128.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FFACETools, Version=1.1.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Release\FFACETools.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -151,6 +147,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sword-03-128.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FFACETools\FFACETools.csproj">
+      <Project>{37456169-2b9e-49a7-8b20-a160c180e453}</Project>
+      <Name>FFACETools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

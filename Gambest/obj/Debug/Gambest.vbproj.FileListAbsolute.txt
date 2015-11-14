@@ -28,3 +28,15 @@ C:\Users\Steffen\Documents\GitHub\Gambest\Gambest\bin\Debug\FFACETools.dll
 C:\Users\Steffen\Documents\GitHub\Gambest\Gambest\obj\Debug\Gambest.Resources.resources
 C:\Users\Steffen\Documents\GitHub\Gambest\Gambest\obj\Debug\Gambest.vbproj.GenerateResource.Cache
 C:\Users\Steffen\Documents\GitHub\Gambest\Gambest\obj\Debug\Gambest.vbprojResolveAssemblyReference.cache
+C:\Users\Mike\Documents\GitHub\Gambest\Gambest\bin\Debug\Gambest.exe.config
+C:\Users\Mike\Documents\GitHub\Gambest\Gambest\obj\Debug\Gambest.exe
+C:\Users\Mike\Documents\GitHub\Gambest\Gambest\obj\Debug\Gambest.xml
+C:\Users\Mike\Documents\GitHub\Gambest\Gambest\obj\Debug\Gambest.pdb
+C:\Users\Mike\Documents\GitHub\Gambest\Gambest\bin\Debug\Gambest.exe
+C:\Users\Mike\Documents\GitHub\Gambest\Gambest\bin\Debug\Gambest.pdb
+C:\Users\Mike\Documents\GitHub\Gambest\Gambest\bin\Debug\Gambest.xml
+C:\Users\Mike\Documents\GitHub\Gambest\Gambest\bin\Debug\FFACETools.dll
+C:\Users\Mike\Documents\GitHub\Gambest\Gambest\bin\Debug\FFACETools.pdb
+C:\Users\Mike\Documents\GitHub\Gambest\Gambest\obj\Debug\Gambest.vbprojResolveAssemblyReference.cache
+C:\Users\Mike\Documents\GitHub\Gambest\Gambest\obj\Debug\Gambest.Resources.resources
+C:\Users\Mike\Documents\GitHub\Gambest\Gambest\obj\Debug\Gambest.vbproj.GenerateResource.Cache
