@@ -146,7 +146,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dependencies\FFACE.dll" />
+    <Content Include="Resources\FFACE.dll" />
+    <Content Include="Resources\effects.txt" />
+    <Content Include="Resources\example.xml" />
+    <Content Include="Resources\main.xml" />
+    <Content Include="Resources\README.txt" />
+    <Content Include="Resources\states.txt" />
     <Content Include="Sword-03-128.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -161,7 +166,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectDir)\Dependencies\*.*" "$(TargetDir)"</PostBuildEvent>
+    <PostBuildEvent>copy "$(ProjectDir)\Resources\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
